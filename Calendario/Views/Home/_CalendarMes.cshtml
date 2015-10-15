@@ -1,0 +1,67 @@
+﻿@model int[]
+@{
+    Layout = null;
+
+    var list = new List<string>
+    {
+        "Domingo",
+        "Segunda",
+        "Terça",
+        "Quarta",
+        "Quinta",
+        "Sexta",
+        "Sabado"
+    };
+
+    var firstDayOfMonth = new DateTime(Model[0], Model[1], 1);
+    var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+    var cont = 0;
+    var a = firstDayOfMonth.AddDays(-(int)firstDayOfMonth.DayOfWeek);
+    var b = lastDayOfMonth.AddDays(1);
+}
+
+<div class="divCalendario">
+    @for (var j = 0; j < 7; j++)
+    {
+        <div class="divCabecalho">
+            @(list[j])
+        </div>
+    }
+    @for (var j = firstDayOfMonth; j <= lastDayOfMonth; j = j.AddDays(1))
+    {
+        if ((int)j.DayOfWeek == cont)
+        {
+            cont++;
+            <div class="divDias" data-id="@j.ToShortDateString()">
+                @j.Day
+            </div>
+        }
+        else
+        {
+            <div class="divDiasOff">
+                @a.Day
+            </div>
+            cont++;
+            j = j.AddDays(-1);
+            a = a.AddDays(1);
+        }
+        if (cont == 7)
+        {
+            cont = 0;
+        }
+    }
+    @for (var j = cont; j < 7; j++)
+    {
+        <div class="divDiasOff">
+            @b.Day
+        </div>
+        b = b.AddDays(1);
+    }
+</div>
+
+<script>
+    var dataHJ2 = '@DateTime.Now.ToShortDateString()';
+
+    $('[data-id="' + dataHJ2 + '"]').removeClass('divDias');
+    $('[data-id="' + dataHJ2 + '"]').addClass('divDiasHj');
+</script>
