@@ -1,18 +1,6 @@
 ﻿@model int[]
 @{
     Layout = null;
-
-    var list = new List<string>
-    {
-        "Domingo",
-        "Segunda",
-        "Terça",
-        "Quarta",
-        "Quinta",
-        "Sexta",
-        "Sabado"
-    };
-
     var firstDayOfMonth = new DateTime(Model[0], Model[1], 1);
     var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
     var cont = 0;
@@ -20,12 +8,10 @@
     var b = lastDayOfMonth.AddDays(1);
 }
 
-<div class="divCalendario">
+<div class="divCalendario col-sm-12">
     @for (var j = 0; j < 7; j++)
     {
-        <div class="divCabecalho">
-            @(list[j])
-        </div>
+        <div class="divCabecalho"></div>
     }
     @for (var j = firstDayOfMonth; j <= lastDayOfMonth; j = j.AddDays(1))
     {
@@ -62,6 +48,7 @@
 <script>
     var dataHJ2 = '@DateTime.Now.ToShortDateString()';
 
-    $('[data-id="' + dataHJ2 + '"]').removeClass('divDias');
-    $('[data-id="' + dataHJ2 + '"]').addClass('divDiasHj');
+    $('[data-id="' + dataHJ2 + '"]')
+        .removeClass('divDias')
+        .addClass('divDiasHj');
 </script>

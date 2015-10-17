@@ -1,0 +1,34 @@
+﻿@media screen and (max-height: 771px) {
+    .divDias, .divDiasHj, .divDiasOff {
+        transition: height 0.5s;
+        height: 90px;
+    }
+}
+
+@media screen and (max-height: 711px) {
+    .divDias, .divDiasHj, .divDiasOff {
+        transition: height 0.5s;
+        height: 80px;
+    }
+}
+
+@media screen and (max-height: 652px) {
+    .divDias, .divDiasHj, .divDiasOff {
+        transition: height 0.5s;
+        height: 70px;
+    }
+}
+
+@media screen and (max-height: 593px) {
+    .divDias, .divDiasHj, .divDiasOff {
+        transition: height 0.5s;
+        height: 60px;
+    }
+}
+
+@media screen and (max-height: 532px) {
+    .divDias, .divDiasHj, .divDiasOff {
+        transition: height 0.5s;
+        height: 50px;
+    }
+}

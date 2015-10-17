@@ -1,0 +1,174 @@
+﻿@{ Layout = null; }
+
+<style>
+    .divGeral {
+        display: flex;
+    }
+
+    .divConteudo {
+        display: flex;
+        width: auto;
+        overflow-y: auto;
+    }
+
+    .divHora {
+        min-width: 80px;
+        border-right: 1px solid rgba(200,200,200,1);
+    }
+
+    .divAgenda {
+        min-width: 223px;
+        border-right: 1px solid rgba(200,200,200,1);
+    }
+
+    .divHora,
+    .divAgenda {
+        list-style-type: none;
+        text-align: right;
+        padding-left: 0px;
+    }
+
+        .divHora > li,
+        .divAgenda > li {
+            height: 240px;
+            padding-right: 5px;
+            font-size: 27px;
+            color: cornflowerblue;
+        }
+
+    .divTituloMarg {
+        display: flex;
+    }
+
+    .divTituloMargConteudo {
+        display: flex;
+        width: auto;
+        overflow-y: auto;
+        overflow: hidden;
+    }
+
+    .divTituloMarg {
+        min-width: 80px;
+    }
+
+    .divTitulo {
+        text-align: center;
+        min-width: 223px;
+        font-size: 27px;
+        border-bottom: 1px solid #BF2C12;
+    }
+
+    .imagemSeta {
+        width: 10px;
+        height: 5px;
+        margin-top: 39px;
+        margin-left: 71px;
+        position: fixed;
+    }
+
+    .divAula {
+        text-align: left;
+    }
+
+    .divAulaImagem {
+        width: 10px;
+        font-size: 14px;
+        float: left;
+        margin-left: -7px;
+        color: black;
+    }
+
+    .divAulaHorario {
+        width: 202px;
+        font-size: 14px;
+        float: left;
+        margin-left: 7px;
+        color: gray;
+    }
+
+    .divAulaTexto {
+        width: 221px;
+        font-size: 16px;
+        float: left;
+        padding-left: 10px;
+        color: cornflowerblue;
+    }
+    .divAulaProfessor{
+        width: 221px;
+        font-size: 14px;
+        float: left;
+        padding-left: 10px;
+        color: rgba(200,200,200,1);
+    }
+</style>
+
+<div class="divTituloMarg">
+    <div class="divTituloMarg">
+        <img class="imagemSeta" src="http://www.fiatbotta.com.br/wp-content/themes/Fiatbotta/img/seta.png" />
+    </div>
+    <div class="divTituloMargConteudo" id="divTituloHorario">
+        <div class="divTitulo">
+            <img style="width: 100px;" src="http://www.akytudo.com.br/imagens/placa-preta.png" />
+        </div>
+        <div class="divTitulo">
+            <img style="width: 100px;" src="http://www.akytudo.com.br/imagens/placa-preta.png" />
+        </div>
+        <div class="divTitulo">
+            <img style="width: 100px;" src="http://www.akytudo.com.br/imagens/placa-preta.png" />
+        </div>
+        <div class="divTitulo">
+            <img style="width: 100px;" src="http://www.akytudo.com.br/imagens/placa-preta.png" />
+        </div>
+    </div>
+</div>
+
+<div class="divGeral">
+    <ul class="divHora">
+        <li>8:00</li>
+        <li>9:00</li>
+    </ul>
+    <div class="divConteudo" id="divHorarios">
+        <ul class="divAgenda">
+            <li>
+                <div class="divAula">
+                    <div class="divAulaImagem">☻</div>
+                    <div class="divAulaHorario">8:10</div>
+                    <div class="divAulaTexto">Aula de Informatica LHAskjfkk kjskakjdskbskfb</div>
+                    <div class="divAulaProfessor">Gustavo Maritan</div>
+                </div>
+                <div class="divAula">
+                    <div class="divAulaImagem">☻</div>
+                    <div class="divAulaHorario">8:10</div>
+                    <div class="divAulaTexto">Aula de Informatica LHAskjfkk kjskakjdskbskfb</div>
+                    <div class="divAulaProfessor">Gustavo Maritan</div>
+                </div>
+            </li>
+            <li></li>
+        </ul>
+        <ul class="divAgenda">
+            <li>
+                <div class="divAula">
+                    <div class="divAulaImagem">☻</div>
+                    <div class="divAulaHorario">8:10</div>
+                    <div class="divAulaTexto">Aula de Informatica LHAskjfkk kjskakjdskbskfb</div>
+                    <div class="divAulaProfessor">Gustavo Maritan</div>
+                </div>
+            </li>
+            <li></li>
+        </ul>
+        <ul class="divAgenda">
+            <li></li>
+            <li></li>
+        </ul>
+        <ul class="divAgenda">
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    $('#divHorarios').scroll(function () {
+        $('#divTituloHorario').scrollLeft($('#divHorarios').scrollLeft());
+    });
+</script>
