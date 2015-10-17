@@ -1,8 +1,11 @@
-﻿@using System.Globalization
+﻿@model List<Calendario.ViewModel.SalaAulaViewModel>
+@using System.Globalization
 @{
     ViewBag.Title = "Home Page";
     var ano = 2000;
 }
+<link href="~/Content/CalendarioDia.css" rel="stylesheet" />
+<script src="~/Scripts/CalendarioDia.js"></script>
 <br />
 <div class="row">
     <div class="col-sm-4">
@@ -31,7 +34,7 @@
 </div>
 <br />
 <div class="row" id="divCalendar">
-    @Html.Partial("_CalendarDia2")
+    @*@Html.Partial("_CalendarDia2", Model)*@
 </div>
 
 
@@ -56,4 +59,52 @@
         $('#lb1').html('y - ' + $(window).height());
         $('#lb2').html('x - ' + $(window).width());
     });
+    
+    var conteudo = [
+    {
+        Nome: "",
+        Imagem: "http://www.akytudo.com.br/imagens/placa-preta.png",
+        Agenda: [
+            {
+                Horario: new Date(2000, 1, 1, 8, 10, 0),
+                Descricao: "Aula Matematica",
+                Professor: "Gustavo Maritan"
+            }
+        ]
+    },
+    {
+        Nome: "",
+        Imagem: "http://www.akytudo.com.br/imagens/placa-preta.png",
+        Agenda: [
+            {
+                Horario: new Date(2000, 1, 1, 8, 10, 0),
+                Descricao: "Aula Matematica",
+                Professor: "Gustavo Maritan"
+            }
+        ]
+    },
+    {
+        Nome: "",
+        Imagem: "http://www.akytudo.com.br/imagens/placa-preta.png",
+        Agenda: [
+            {
+                Horario: new Date(2000, 1, 1, 8, 10, 0),
+                Descricao: "Aula Matematica",
+                Professor: "Gustavo Maritan"
+            }
+        ]
+    },
+    {
+        Nome: "",
+        Imagem: "http://www.akytudo.com.br/imagens/placa-preta.png",
+        Agenda: [
+            {
+                Horario: new Date(2000, 1, 1, 8, 10, 0),
+                Descricao: "Aula Matematica",
+                Professor: "Gustavo Maritan"
+            }
+        ]
+    }];
+
+    $('#divCalendar').caledario(conteudo);
 </script>
