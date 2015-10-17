@@ -57,17 +57,21 @@
         font-size: 27px;
         border-bottom: 1px solid #BF2C12;
     }
-
+    .divImagem {
+        display: inline-block;
+    }
     .imagemSeta {
         width: 10px;
         height: 5px;
         margin-top: 39px;
         margin-left: 71px;
-        position: fixed;
+        /*position: fixed;*/
     }
 
     .divAula {
         text-align: left;
+        /*margin-top: 220px;*/
+        display: inline-block;
     }
 
     .divAulaImagem {
@@ -93,7 +97,8 @@
         padding-left: 10px;
         color: cornflowerblue;
     }
-    .divAulaProfessor{
+
+    .divAulaProfessor {
         width: 221px;
         font-size: 14px;
         float: left;
@@ -103,7 +108,7 @@
 </style>
 
 <div class="divTituloMarg">
-    <div class="divTituloMarg">
+    <div class="divImagem">
         <img class="imagemSeta" src="http://www.fiatbotta.com.br/wp-content/themes/Fiatbotta/img/seta.png" />
     </div>
     <div class="divTituloMargConteudo" id="divTituloHorario">
@@ -124,7 +129,7 @@
 
 <div class="divGeral">
     <ul class="divHora">
-        <li>8:00</li>
+        <li>8:00 -</li>
         <li>9:00</li>
     </ul>
     <div class="divConteudo" id="divHorarios">
