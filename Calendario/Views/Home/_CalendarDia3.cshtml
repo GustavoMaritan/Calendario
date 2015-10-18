@@ -1,0 +1,196 @@
+﻿@model List<Calendario.ViewModel.SalaAulaViewModel>
+@{ Layout = null; }
+@{
+    var a = new DateTime(2000, 1, 1, 0, 0, 0);
+    var b = new DateTime(2000, 1, 2, 0, 0, 0);
+}
+
+<style>
+    .divTituloGeral {
+        display: -webkit-inline-box;
+        position: fixed;
+        width: 800px;
+        z-index: 1000;
+        height: 40px;
+        background-color: white;
+        top: 124px;
+    }
+
+    .divGeral {
+        display: -webkit-inline-box;
+        width: 800px;
+        position: absolute;
+        top: 168px;
+    }
+
+    .divTituloMargConteudo {
+        display: -webkit-inline-box;
+        max-width: 673px;
+        overflow-x: auto;
+        position: absolute;
+        overflow: hidden;
+        bottom: 0px;
+    }
+
+    .divConteudo {
+        display: -webkit-inline-box;
+        max-width: 673px;
+        overflow-x: auto;
+        position: absolute;
+    }
+
+    .divTituloEspaco {
+        min-width: 113px;
+        height: 40px;
+        /*position: absolute;*/
+        bottom: 0px;
+    }
+
+    .divHora {
+        min-width: 80px;
+        border-right: 1px solid rgba(200,200,200,1);
+    }
+
+    .divTitulo {
+        width: 223px;
+        text-align: center;
+    }
+
+    .divAgenda {
+        width: 223px;
+        border-right: 1px solid rgba(200,200,200,1);
+    }
+
+    ul {
+        list-style-type: none;
+    }
+
+    .divHora > li,
+    .divAgenda > li {
+        height: 240px;
+        padding-right: 5px;
+        font-size: 27px;
+        color: cornflowerblue;
+    }
+
+    .divAula {
+        text-align: left;
+        /*margin-top: 220px;*/
+        display: inline-block;
+        margin-left: -41px;
+    }
+
+    .divAulaImagem {
+        width: 10px;
+        font-size: 14px;
+        float: left;
+        margin-left: -7px;
+        color: black;
+    }
+
+    .divAulaHorario {
+        width: 202px;
+        font-size: 14px;
+        float: left;
+        margin-left: 7px;
+        color: gray;
+    }
+
+    .divAulaTexto {
+        width: 221px;
+        font-size: 16px;
+        float: left;
+        padding-left: 10px;
+        color: cornflowerblue;
+    }
+
+    .divAulaProfessor {
+        width: 221px;
+        font-size: 14px;
+        float: left;
+        padding-left: 10px;
+        color: rgba(200,200,200,1);
+    }
+</style>
+
+<div class="divTituloGeral">
+    <div class="divTituloEspaco">
+    </div>
+    <div class="divTituloMargConteudo" id="divTituloHorario">
+        @foreach (var sala in Model)
+        {
+            <div class="divTitulo">
+                <img style="width: 100px;" src="@sala.Imagem" />
+            </div>
+        }
+    </div>
+</div>
+
+<div class="divGeral">
+    <ul class="divHora">
+        @for (var i = a; i < b; i = i.AddHours(1))
+        {
+            <li>@i.ToShortTimeString()</li>
+        }
+    </ul>
+    <div class="divConteudo" id="divHorarios">
+        @foreach (var sala in Model)
+        {
+            <ul class="divAgenda">
+                @for (var i = a; i < b; i = i.AddHours(1))
+                {
+                    var listHorario = sala.Agenda
+                        .Where(x => x.Horario.Hour == i.Hour)
+                        .OrderBy(x => x.Horario)
+                        .ToList();
+                    <li data-hora="@i.Hour">
+                        @foreach (var hor in listHorario)
+                        {
+                            <div class="divAula" data-min="@hor.Horario.Minute">
+                                <div class="divAulaImagem">☻</div>
+                                <div class="divAulaHorario">@hor.Horario.ToShortTimeString()</div>
+                                <div class="divAulaTexto">@hor.Descricao</div>
+                                <div class="divAulaProfessor">@hor.Professor</div>
+                            </div>
+                        }
+                    </li>
+                }
+            </ul>
+        }
+    </div>
+</div>
+
+<script>
+    $('#divHorarios').scroll(function () {
+        $('#divTituloHorario').scrollLeft($('#divHorarios').scrollLeft());
+    });
+
+    $('[data-hora]').each(function () {
+        var margem = 0;
+        $(this).children('.divAula').each(function () {
+            var a2 = $(this).attr('data-min');
+            var a3 = a2 * 4;
+            var a4 = (a3 - margem) + 'px';
+            $(this).css('margin-top', a4);
+            margem += (
+                parseInt($(this).css('margin-top').replace('px', '')) +
+                    parseInt($(this).css('height').replace('px', ''))
+            );
+        });
+    });
+    var topa = 124;
+    $(document).scroll(function () {
+        console.log($(document).scrollTop());
+        if ($(document).scrollTop() <= 73) {
+            var a = topa - parseInt($(document).scrollTop());
+            console.log(topa);
+
+            $('.divTituloGeral').css('top', a);
+        } else if ($(document).scrollTop() > 73) {
+            var b = topa - 73;
+            console.log(topa);
+
+            $('.divTituloGeral').css('top', b);
+        }
+    });
+</script>

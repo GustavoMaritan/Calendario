@@ -4,8 +4,8 @@
     ViewBag.Title = "Home Page";
     var ano = 2000;
 }
-<link href="~/Content/CalendarioDia.css" rel="stylesheet" />
-<script src="~/Scripts/CalendarioDia.js"></script>
+@*<link href="~/Content/CalendarioDia.css" rel="stylesheet" />
+    <script src="~/Scripts/CalendarioDia.js"></script>*@
 <br />
 <div class="row">
     <div class="col-sm-4">
@@ -25,18 +25,81 @@
             }
         </select>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-2">
         <div class="form-control">
             <label id="lb1"></label>
             <label id="lb2"></label>
         </div>
     </div>
+    <div class="col-sm-2">
+        <button type="button" onclick="refresh()">Click</button>
+    </div>
 </div>
 <br />
 <div class="row" id="divCalendar">
-    @*@Html.Partial("_CalendarDia2", Model)*@
+    @Html.Partial("_CalendarDia3", Model)
 </div>
 
+<script>
+    var conteudo = [
+        {
+            Nome: "",
+            Imagem: "http://www.akytudo.com.br/imagens/placa-preta.png",
+            Agenda: [
+                {
+                    Horario: new Date(2000, 1, 1, 8, 10, 0),
+                    Descricao: "Aula Matematica",
+                    Professor: "Gustavo Maritan"
+                }
+            ]
+        },
+        {
+            Nome: "",
+            Imagem: "http://www.akytudo.com.br/imagens/placa-preta.png",
+            Agenda: [
+                {
+                    Horario: new Date(2000, 1, 1, 8, 10, 0),
+                    Descricao: "Aula Matematica",
+                    Professor: "Gustavo Maritan"
+                }
+            ]
+        },
+        {
+            Nome: "",
+            Imagem: "http://www.akytudo.com.br/imagens/placa-preta.png",
+            Agenda: [
+                {
+                    Horario: new Date(2000, 1, 1, 8, 10, 0),
+                    Descricao: "Aula Matematica",
+                    Professor: "Gustavo Maritan"
+                }
+            ]
+        },
+        {
+            Nome: "",
+            Imagem: "http://www.akytudo.com.br/imagens/placa-preta.png",
+            Agenda: [
+                {
+                    Horario: new Date(2000, 1, 1, 8, 10, 0),
+                    Descricao: "Aula Matematica",
+                    Professor: "Gustavo Maritan"
+                }
+            ]
+        }];
+
+    var conteudo2 = [
+    {
+        Nome: "",
+        Imagem: "http://www.akytudo.com.br/imagens/placa-preta.png",
+        Agenda: [
+            {
+                Horario: new Date(2000, 1, 1, 8, 10, 0),
+                Descricao: "Aula Matematica",
+                Professor: "Gustavo Maritan"
+            }
+        ]
+    }];
+</script>
 
 <script>
     var dataHJ = '@DateTime.Now.ToShortDateString()';
@@ -59,52 +122,14 @@
         $('#lb1').html('y - ' + $(window).height());
         $('#lb2').html('x - ' + $(window).width());
     });
-    
-    var conteudo = [
-    {
-        Nome: "",
-        Imagem: "http://www.akytudo.com.br/imagens/placa-preta.png",
-        Agenda: [
-            {
-                Horario: new Date(2000, 1, 1, 8, 10, 0),
-                Descricao: "Aula Matematica",
-                Professor: "Gustavo Maritan"
-            }
-        ]
-    },
-    {
-        Nome: "",
-        Imagem: "http://www.akytudo.com.br/imagens/placa-preta.png",
-        Agenda: [
-            {
-                Horario: new Date(2000, 1, 1, 8, 10, 0),
-                Descricao: "Aula Matematica",
-                Professor: "Gustavo Maritan"
-            }
-        ]
-    },
-    {
-        Nome: "",
-        Imagem: "http://www.akytudo.com.br/imagens/placa-preta.png",
-        Agenda: [
-            {
-                Horario: new Date(2000, 1, 1, 8, 10, 0),
-                Descricao: "Aula Matematica",
-                Professor: "Gustavo Maritan"
-            }
-        ]
-    },
-    {
-        Nome: "",
-        Imagem: "http://www.akytudo.com.br/imagens/placa-preta.png",
-        Agenda: [
-            {
-                Horario: new Date(2000, 1, 1, 8, 10, 0),
-                Descricao: "Aula Matematica",
-                Professor: "Gustavo Maritan"
-            }
-        ]
-    }];
 
-    $('#divCalendar').caledario(conteudo);
+    @*var g = JSON.parse('@Html.Raw(Json.Encode(Model))');
+
+    var s = $('#divCalendar').caledario(g, {});
+
+    function refresh() {
+        s.refresh(conteudo2);
+    }*@
+
+
 </script>

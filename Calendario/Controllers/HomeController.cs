@@ -36,6 +36,84 @@ namespace Calendario.Controllers
                             Professor = "Gustavo Maritan"
                         }
                     }
+                },
+                new SalaAulaViewModel
+                {
+                    Nome = "Sala 1",
+                    Imagem = "http://www.akytudo.com.br/imagens/placa-preta.png",
+                    Agenda = new List<AgendaDiaViewModel>
+                    {
+                        new AgendaDiaViewModel
+                        {
+                            Descricao = "Aula de Matematica fslksnfl sdflk nd oj sod",
+                            Horario = new DateTime(2015, 1, 1, 8, 10, 0),
+                            Professor = "Gustavo Maritan"
+                        },
+                        new AgendaDiaViewModel
+                        {
+                            Descricao = "Aula de Informatica",
+                            Horario = new DateTime(2015, 1, 1, 9, 5, 0),
+                            Professor = "Gustavo Maritan"
+                        },
+                        new AgendaDiaViewModel
+                        {
+                            Descricao = "Aula de Portugues",
+                            Horario = new DateTime(2015, 1, 1, 8, 40, 0),
+                            Professor = "Gustavo Maritan"
+                        }
+                    }
+                },
+                new SalaAulaViewModel
+                {
+                    Nome = "Sala 1",
+                    Imagem = "http://www.akytudo.com.br/imagens/placa-preta.png",
+                    Agenda = new List<AgendaDiaViewModel>
+                    {
+                        new AgendaDiaViewModel
+                        {
+                            Descricao = "Aula de Matematica fslksnfl sdflk nd oj sod",
+                            Horario = new DateTime(2015, 1, 1, 8, 10, 0),
+                            Professor = "Gustavo Maritan"
+                        },
+                        new AgendaDiaViewModel
+                        {
+                            Descricao = "Aula de Informatica",
+                            Horario = new DateTime(2015, 1, 1, 9, 5, 0),
+                            Professor = "Gustavo Maritan"
+                        },
+                        new AgendaDiaViewModel
+                        {
+                            Descricao = "Aula de Portugues",
+                            Horario = new DateTime(2015, 1, 1, 8, 40, 0),
+                            Professor = "Gustavo Maritan"
+                        }
+                    }
+                },
+                new SalaAulaViewModel
+                {
+                    Nome = "Sala 1",
+                    Imagem = "http://www.akytudo.com.br/imagens/placa-preta.png",
+                    Agenda = new List<AgendaDiaViewModel>
+                    {
+                        new AgendaDiaViewModel
+                        {
+                            Descricao = "Aula de Matematica fslksnfl sdflk nd oj sod",
+                            Horario = new DateTime(2015, 1, 1, 8, 10, 0),
+                            Professor = "Gustavo Maritan"
+                        },
+                        new AgendaDiaViewModel
+                        {
+                            Descricao = "Aula de Informatica",
+                            Horario = new DateTime(2015, 1, 1, 9, 5, 0),
+                            Professor = "Gustavo Maritan"
+                        },
+                        new AgendaDiaViewModel
+                        {
+                            Descricao = "Aula de Portugues",
+                            Horario = new DateTime(2015, 1, 1, 8, 40, 0),
+                            Professor = "Gustavo Maritan"
+                        }
+                    }
                 }
             };
 
