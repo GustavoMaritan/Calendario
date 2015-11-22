@@ -1,0 +1,110 @@
+﻿@model List<Calendario.ViewModel.SalaAulaViewModel>
+@{ Layout = null; }
+@{
+    var a = new DateTime(2000, 1, 1, 0, 0, 0);
+    var b = new DateTime(2000, 1, 2, 0, 0, 0);
+}
+
+<style>
+    div.divConteudo {
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+        div.divConteudo [class*="col"], /* TWBS v3 */
+        div.divConteudo [class*="span"] { /* TWBS v2 */
+            display: inline-block;
+            float: none; /* Very important */
+        }
+
+    .divHora > li,
+    .divAgenda > li {
+        /*padding-right: 5px;*/
+        height: 240px;
+        font-size: 27px;
+        color: cornflowerblue;
+    }
+
+    .divAula {
+        text-align: left;
+        /*margin-top: 220px;*/
+        display: inline-block;
+        margin-left: -41px;
+    }
+
+    .divAulaImagem {
+        font-size: 14px;
+        color: black;
+    }
+
+    .divAulaHorario {
+        font-size: 14px;
+        color: gray;
+    }
+
+    .divAulaTexto {
+        font-size: 16px;
+        color: cornflowerblue;
+    }
+
+    .divAulaProfessor {
+        font-size: 14px;
+        color: rgba(200,200,200,1);
+    }
+
+    ul {
+        list-style-type: none;
+    }
+    
+</style>
+
+@*<div class="divTituloGeral col-sm-12">
+    <div class="divTituloEspaco col-sm-1">
+        Teste
+    </div>
+    <div class="divTituloMargConteudo col-sm-11" id="divTituloHorario">
+        @foreach (var sala in Model)
+        {
+            <div class="divTitulo col-sm-4">
+                <img style="width: 100px;" src="@sala.Imagem" />
+            </div>
+        }
+    </div>
+</div>*@
+
+<div class="divGeral col-sm-12">
+    <ul class="divHora col-sm-2" style="display: none;">
+        <div style="width: 100px; height: 100px"></div>
+        @for (var i = a; i < b; i = i.AddHours(1))
+        {
+            <li>@i.ToShortTimeString()</li>
+        }
+    </ul>
+    <div class="divConteudo  col-sm-10" id="divHorarios">
+        @foreach (var sala in Model)
+        {
+            <ul class="divAgenda  col-sm-4">
+                <img style="width: 100px;" src="@sala.Imagem" />
+                @for (var i = a; i < b; i = i.AddHours(1))
+                {
+                    var listHorario = sala.Agenda
+                        .Where(x => x.Horario.Hour == i.Hour)
+                        .OrderBy(x => x.Horario)
+                        .ToList();
+                    <li data-hora="@i.Hour">
+                        @foreach (var hor in listHorario)
+                        {
+                            <div class="divAula" data-min="@hor.Horario.Minute">
+                                <div class="divAulaImagem">☻</div>
+                                <div class="divAulaHorario">@hor.Horario.ToShortTimeString()</div>
+                                <div class="divAulaTexto">@hor.Descricao</div>
+                                <div class="divAulaProfessor">@hor.Professor</div>
+                            </div>
+                        }
+                    </li>
+                }
+            </ul>
+        }
+    </div>
+</div>
+

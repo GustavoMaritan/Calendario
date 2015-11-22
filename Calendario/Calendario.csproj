@@ -160,6 +160,7 @@
     <Content Include="Views\Home\_CalendarDia.cshtml" />
     <Content Include="Views\Home\_CalendarDia2.cshtml" />
     <Content Include="Views\Home\_CalendarDia3.cshtml" />
+    <Content Include="Views\Home\_CalendarDia4.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
